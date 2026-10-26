@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pfand Check</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ========== SCREEN 1: HOME ========== -->
+  <main id="home" class="screen">
+    <header class="top">
+      <h1>Pfand Check</h1>
+      <p class="subtitle">Is the bottle machine free before you go?</p>
+    </header>
+
+    <!-- Colour legend: every colour also has a text label -->
+    <ul class="legend">
+      <li><span class="dot green"></span> Working</li>
+      <li><span class="dot yellow"></span> Queue</li>
+      <li><span class="dot red"></span> Not working</li>
+    </ul>
+
+    <h2 class="section-title">Nearby stores</h2>
+    <!-- Store cards are created by app.js -->
+    <div id="storeList" class="store-list"></div>
+    <p class="demo-note">Demo data: statuses come from users' reports.</p>
+
+    <h2 class="section-title">Tips &amp; News</h2>
+    <article class="tip-card important">
+      <h3>Machine rejected your bottle?</h3>
+      <p>Don't throw it away! Stores must take back deposit bottles by hand at the checkout, even if the machine rejects them.</p>
+      <button class="link-btn" id="showSentence">Show what to say at the checkout</button>
+      <p id="germanSentence" class="german hidden">
+        „Der Automat nimmt diese Flasche nicht an. Können Sie sie bitte manuell annehmen?"
+      </p>
+    </article>
+    <article class="tip-card">
+      <h3>Weekends are busiest</h3>
+      <p>Check the queue before you go on Saturday, or return bottles on a weekday evening.</p>
+    </article>
+  </main>
+
+  <!-- ========== SCREEN 2: STORE DETAIL / REPORT ========== -->
+  <main id="detail" class="screen hidden">
+    <button class="back-btn" id="backBtn">← Back</button>
+    <h1 id="detailName">Store</h1>
+    <p id="detailStatus" class="detail-status"></p>
+
+    <iframe id="detailMap" class="map" title="Map" loading="lazy"></iframe>
+
+    <h2 class="section-title">What's the status now?</h2>
+    <div class="report-group">
+      <button class="report-btn green" data-status="working">✅ Working, no queue</button>
+      <button class="report-btn red" data-status="broken">⛔ Broken / not available</button>
+    </div>
+
+    <p class="report-label">Queue (people waiting):</p>
+    <div class="report-row">
+      <button class="report-btn yellow" data-status="queue" data-queue="1–3">1–3</button>
+      <button class="report-btn yellow" data-status="queue" data-queue="4–8">4–8</button>
+      <button class="report-btn yellow" data-status="queue" data-queue="8+">8+</button>
+    </div>
+  </main>
+
+  <!-- Small "thank you" message after reporting -->
+  <div id="toast" class="toast hidden">Thanks! Status updated.</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
